@@ -1,0 +1,18 @@
+{
+    "ansprechpartner":"Benutzer/23",
+    "opening_hours":[{
+        "opens":"08:30:00",
+        "closes":"09:30:00",
+        "validFrom":"2015-12-26",
+        "validThrough":"2015-12-30",        
+        "day_of_week":["MO","DI","MI"],
+        "wiederholung":"Woche",
+        "ort": {
+            "locality": "Düsseldorf",
+            "region": "NRW",
+            "country-name": "Germany",
+            "street-address":"Musterstrasse 20"
+        }
+    }],
+    "zuständigkeiten":[51067,51068,51069]
+}

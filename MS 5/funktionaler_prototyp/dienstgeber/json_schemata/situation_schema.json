@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://example.com/schemas/myschema.json",
+	"description": "Situation bezogen auf Transportmittel, aktuellem Standort und geschätztem Ziel",
+	"title": "situation",
+	"type": "object",
+	"properties": {
+		"startzeitpunkt": {
+			"description": "Startzeitpunkt, aktuelle Uhrzeit oder in der Zukunft liegend",
+			"type": "string",
+			"format": "date-time"
+		},
+		"startstandort": {
+			"description": "standort zum Startzeitpunkt",
+            "$ref": "definitions.json#/geo"
+		},
+		"endzeitpunkt": {
+			"description": "Endzeitpunkt, gleich dem Startzeitpunkt oder in der Zukunft liegend",
+			"type": "string",
+			"format": "date-time"
+		},
+		"endstandort": {
+			"description": "Standort zum Endzeitpunkt",
+            "$ref": "definitions.json#/geo"
+		},
+		"fortbewegungsmittel": {
+			"$ref": "definitions.json#/fortbewegungsmittel"
+		},
+		"reichweite": {
+			"type": "integer",
+			"description": "Geschätzte Reichweite , ggf. basierend auf dem Fortbewegungsmittel",
+			"minimum": 0
+		},
+		"transportgewicht": {
+			"type": "integer",
+			"description": "Geschätzte Reichweite , ggf. basierend auf dem Fortbewegungsmittel",
+			"minimum": 0
+		},
+        "vorschlaege":{
+            "description":"Mögliche Aktionen zum Sammeln oder Transportieren von Spenden, basierend auf den Daten dieser Situation",
+            "type":"string",
+            "format":"uri"
+        }
+	},
+	"required": ["startzeitpunkt","startstandort"],
+	"links": [{
+		"method": "GET",
+		"rel": "related",
+		"href": "/Sammelaktionen",
+	},{
+        "method": "GET",
+		"rel": "related",
+		"href": "/Transportaktionen",
+    }]
+}

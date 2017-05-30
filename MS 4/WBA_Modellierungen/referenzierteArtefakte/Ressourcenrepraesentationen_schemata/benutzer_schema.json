@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://example.com/schemas/myschema.json",
+    "title": "benutzer",
+    "type": "object",
+    "properties": {
+        "id": {
+            "description": "eindeutiger bezeichner für den Benutzer",
+            "type": "integer"
+        },
+
+        "card": {
+            "$ref": "http://json-schema.org/card"
+        },
+
+        "wiederkehrendetermine": {
+            "description": "Termine die in einem bestimmten Zeitintervall wiederholt werden",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "$ref": "definitions.json#/wiederkehrendertermin"
+            }
+        }
+    },
+
+    "required": ["card"],
+
+    "links": [{
+        "title": "GET Benutzer Collection",
+        "method": "GET",
+        "rel": "related",
+        "href": "/Benutzer/"
+    }, {
+        "title": "GET Aktionen für die der Benutzer eingetragen ist ",
+        "method": "GET",
+        "rel": "Eingenommene Verantwortlichkeiten dieses Benutzers",
+        "href": "/Verantwortlichkeiten"
+    }, {
+        "title": "POST eine neue Verantwortlichkeit",
+        "method": "POST",
+        "rel": "Eingenommene Verantwortlichkeiten dieses Benutzers",
+        "href": "/Verantwortlichkeiten",
+        "encType": "application/json"
+    }]
+
+}

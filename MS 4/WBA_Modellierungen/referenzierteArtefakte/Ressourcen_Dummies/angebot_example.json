@@ -1,0 +1,27 @@
+{
+    "gewicht": 7.6,
+    "artikelkategorien": [
+        "Getränke und Flüssigwaren"
+    ],
+    "erstellungsdatum": "2106-06-04T08:34:13.889Z",
+    "abholtermine": [
+        {
+            "von": "2015-12-15T06:00:36.252Z",
+            "bis": "2015-12-09T09:37:21.167Z",
+            "ort":{
+                "country-name":"Germany",
+                "region":"NRW",
+                "postal-code":"50668",
+                "street-address":"Ursulastraße 30"
+            }
+        }
+    ],
+    "bild": "voluptas saepe cum",
+    "id":"507c7f79bcf86cd7994f6c0e",
+    "beschreibung": "Flasche Wein, 2l Milch",
+    "gueltigkeitsablaufdatum": "2949-07-12T02:34:01.035Z",
+    "status":"abgeholt",
+    "zustanedigetafel":"http://foodhood.org/Tafelverein/23", 
+    "anbieter":"http://foodhood.org/Benutzer/10",
+    "beinhaltet":"http://foodhood.org/Angebot/19/Angebote"
+}

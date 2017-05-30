@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:tp1="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" version="1.1" creator="TurtleSport">
+<metadata>
+<name>11092015_161351.gpx</name>
+<time>2015-11-09T16:24:27</time>
+</metadata>
+<trk>
+<name>11092015_161351.gpx</name>
+<trkseg>
+<trkpt lat="50,946477180000" lon="6,95419550000"><ele>50,0</ele><time>2015-11-09T21:13:51.000Z</time></trkpt>
+<trkpt lat="50,946686730000" lon="6,95407748000"><ele>50,0</ele><time>2015-11-09T21:13:57.000Z</time></trkpt>
+<trkpt lat="50,946656310000" lon="6,95402920000"><ele>50,0</ele><time>2015-11-09T21:14:00.000Z</time></trkpt>
+<trkpt lat="50,946629270000" lon="6,95393264000"><ele>50,0</ele><time>2015-11-09T21:14:02.000Z</time></trkpt>
+<trkpt lat="50,946608990000" lon="6,95383608000"><ele>50,0</ele><time>2015-11-09T21:14:04.000Z</time></trkpt>
+</trkseg>
+
+</trk>
+</gpx>

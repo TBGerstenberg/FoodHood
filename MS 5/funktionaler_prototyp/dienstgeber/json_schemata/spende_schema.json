@@ -1,0 +1,59 @@
+{
+     "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://example.com/schemas/myschema.json",
+    "description":"Situation bezogen auf Transportmittel, aktuellem Standort und geschätztem Ziel",
+    "title": "situation",
+    "type": "object",
+    "properties": {
+
+        "gueltigkeitsablaufdatum":{
+            "description": "Ablaufdatum der Spende, bspw. als letztes mögliches Abholdatum",
+            "type": "string",
+            "format": "date-time"
+        },
+
+        "gesamtgewicht":{
+            "description": "Gewicht des einer Spende , ggf. Summe der Teilgewichte einzelner Angebote, angegeben in KG",
+            "type": "number",
+            "minimum": 5.0
+        },
+
+        "standort":{
+            "oneOf": [{
+                "$ref": "definitions.json#/geo"
+            }, {
+                "$ref": "definitions.json#/address"
+            }]
+        },
+
+        "zustaendigetafel":{
+            "description":"Hyperlink der auf die Tafel-Ressource zeigt, zu der diese Spende transportiert werden soll" , 
+            "type":"string",
+            "format":"uri"
+        },
+        
+        "angebote":{
+            "description":"Hyperlink der auf eine Collection von Angebotsressourcen zeigt, die in dieser Spende gebündelt wurden" , 
+            "type":"string",
+            "format":"uri"
+        }
+    },
+    "required": ["card"],
+    "links": [{
+        "method": "GET",
+        "rel": "related",
+        "href": "/Angebote",
+        "encType": "application/json"
+    },{
+        "method": "POST",
+        "rel": "related",
+        "href": "/Angebote",
+        "encType": "application/json"
+    },{
+
+        "method": "GET",
+        "rel": "related",
+        "href": "{zustaendigetafel}",
+        "encType": "application/json"
+    }]
+}

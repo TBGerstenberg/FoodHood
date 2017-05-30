@@ -1,0 +1,58 @@
+{
+    "$schema": "http://foodhood.org/schemata/definitions",
+    "wiederkehrendertermin": {
+        "description": "Repräsentiert einen Termin der in einem bestimmten Zeitintervall wiederholt wird",
+        "type": "object",
+        "properties": {
+            "von": {
+                "description": "Startzeitpunkt eines Termins",
+                "type": "string",
+                "format": "date-time"
+            },
+            "bis": {
+                "description": "EndZeitpunkt eines Termins",
+                "type": "string",
+                "format": "date-time"
+            },
+
+            "ort": {
+                "$ref": "./external_schemata/address.json"
+            },
+
+            "wochentage": {
+                "description": "Die Wochentage zwischen Start;- und Enddatum",
+                "type": "array",
+                "uniqueItems": true,
+                "maxItems": 7,
+                "items": {
+                    "decription": "Abkürzungen für die Wochentage",
+                    "type": "string",
+                    "enum": ["MO", "DI", "MI", "DO", "FR", "SA", "SO"]
+                }
+            },
+
+            "wiederholung": {
+                "decription": "Intervall der Wiederholung",
+                "type": "string",
+                "enum": ["TAG", "WOCHE", "MONAT", "JAHR"]
+            }
+        }
+    },
+
+    "fortbewegungsmittel":{
+        "type": "string",
+        "enum": ["zu Fuß", "Auto", "Bahn", "Fahrrad"]
+    },
+    
+    "geo":{
+        "$ref": "./external_schemata/geo.json"
+    },
+    
+    "address":{
+        "$ref": "./external_schemata/address.json"
+    },
+    
+    "card":{
+        "$ref": "./external_schemata/card.json"
+    }
+}

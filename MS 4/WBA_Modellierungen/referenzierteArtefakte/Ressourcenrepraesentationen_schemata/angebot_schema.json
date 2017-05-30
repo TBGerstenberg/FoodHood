@@ -1,0 +1,127 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://example.com/schemas/myschema.json",
+    "title": "angebot",
+    "type": "object",
+    "properties": {
+        "id": {
+            "description": "eindeutiger bezeichner für das Angebot",
+            "type": "string"
+        },
+        "beschreibung": {
+            "description": "eine kurze informelle Beschreibung des Angebots ",
+            "type": "string"
+        },
+
+        "bild": {
+            "type": "string",
+            "media": {
+                "binaryEncoding": "base64",
+                "type": "image/png"
+            }
+        },
+
+        "gewicht": {
+            "description": "Gewicht des eines Angebots, ggf. Summe der Teilgewichte einzelner Artikel",
+            "type": "integer",
+            "minimum": 0
+        },
+
+        "artikelkategorien": {
+            "description": "Kategorien zu denen die Einzelartikel eines Angebots zählen",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 6,
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": ["Obst und Gemüse", "Backwaren", "Konserven und Fertiggerichte", "Nudeln und Getreideprodukte", "Süßwaren", "Getränke und Flüssigwaren"]
+            }
+        },
+
+        "erstellungsdatum": {
+            "description": "Zeitpunkt der Erstlellung des Angebots, folgt dem Datumsformat in RFC 3339, Section 5.6, YYYYMMDD-HHSSMM",
+            "type": "string",
+            "format": "date-time"
+        },
+
+        "gueltigkeitsablaufdatum": {
+            "description": "Zeitpunkt an dem das Angebot aus dem System entfernt werden soll, kann bspw. durch abgleich mit dem letzten gültigen Abholtermin ermittelt werden",
+            "type": "string",
+            "format": "date-time"
+        },
+
+        "status": {
+            "description": "Liefert Information darüber ob ein Angebot bereits Teil einer Sammel/Transportaktion ist",
+            "type": "string",
+            "enum": ["nicht_zugewiesen","zugewiesen","abgeholt"]
+        },
+
+        "abholtermine": {
+            "description": "Beinhaltet mögliche Abholtermine für ein Angebot",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 20,
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "von": {
+                        "description": "Startzeitpunkt eines Termins",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "bis": {
+                        "description": "Endzeitpunkt eines Termins",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "required":["von","bis","ort"]
+            }
+        },
+        
+        "standort": {
+                        "oneOf": [{
+                            "$ref": "definitions.json#/address"
+                        }, {
+                            "$ref": "definitions.json#/geo"
+                        }]
+        },
+
+        "zustaendigefafel":{
+            "description":"Hyperlink der auf die Tafel-Ressource zeigt, zu der diese Spende transportiert werden soll" , 
+            "type":"string",
+            "format":"uri"
+        },
+        
+        "anbieter":{
+            "description":"Hyperlink auf eine Benutzer-Ressource zeigt, die den Anbieter dieses Lebensmittelangebots darstellt",
+            "type":"string",
+            "format":"uri"
+        },
+        
+        "beinhaltet":{
+            "description":"Angebots-Ressourcen, die in diesem Angebot gebündelt wurden",
+            "type":"array",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "format":"uri"
+        }
+    },
+    "required": ["gewicht", "artikelkategorien", "erstellungsdatum", "abholtermine","zustaendigetafel","anbieter"],
+    "links": [{
+        "method": "GET",
+        "rel": "related",
+        "href": "{anbieter}"
+    },{
+        "method": "GET",
+        "rel": "related",
+        "href":"{zustaendigetafel}"      
+    },{
+        "method": "PUT",
+        "rel": "related",
+        "href":"{beinhaltet}"      
+    }]
+}

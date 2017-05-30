@@ -1,0 +1,23 @@
+{
+  "name": "PoC",
+  "version": "1.0.0",
+  "description": "Proof of Concepts im EIS Projekt WS15/16 ",
+  "main": "index.js",
+    "dependencies": {
+    "express": "^4.12.4",
+    "body-parser": "^1.12.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TobiGe/EISWS1516MichelsGerstenberg"
+  },
+  "author": "Manuel Michels,Tobias Gerstenberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TobiGe/EISWS1516MichelsGerstenberg/issues"
+  },
+  "homepage": "https://github.com/TobiGe/EISWS1516MichelsGerstenberg"
+}

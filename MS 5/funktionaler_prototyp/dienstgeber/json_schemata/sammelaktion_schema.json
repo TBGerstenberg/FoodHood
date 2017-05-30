@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://foodhood.org/schema/sammelaktion",
+    "title": "sammelaktion",
+    "type": "object",
+    "properties": {
+        "id": {
+            "description": "Status einer Sammelaktion, zeigt an ob sie bereits durchgeführt wurde oder nicht",
+            "type": "string"
+        },
+
+        "status":{
+            "description": "eindeutiger bezeichner für die Sammelaktion",
+            "type": "string",
+            "enum": ["created","announced","done"]
+        },
+
+        "streckenlaenge": {
+            "description": "Länge der zurückzulegenden Strecke bei durchführung dieser Aktion",
+            "type": "integer"
+        },
+
+        "route": {
+            "description": "empfohlene Transportroute zur Durchführung dieser Aktion",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "reihenfolgeindex": {
+                        "description": "Abarbeitungsreihenfolge der einzelnen Zwischenziele der Route",
+                        "type": "integer"
+                    },
+                    "standort": {
+                        "$ref": "definitions.json#/geo"
+                    },
+                    "ankunftszeitpunkt": {
+                        "description": "Ankunftszeitpunkt an diesem Ziel",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "istabgeholt": {
+                        "description": "Zeigt an ob ein zwischenziel bereits erreicht wurde oder nicht",
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+
+        "gesamtgewicht": {
+            "description": "Gewicht des eines Angebots, ggf. Summe der Teilgewichte betroffener Spenden und ihrer Artikel",
+            "type": "integer",
+            "minimum": 0
+        },
+
+        "fortbewegungsmittel": {
+            "description": "Empfohlenes Fortbewegungsmittel zur Durchführung dieser Aktion",
+            "$ref": "definitions.json#/fortbewegungsmittel"
+        },
+
+        "zielstandort": {
+            "description": "Standort der gesammelten Spenden",
+            "oneOf": [{
+                "$ref": "definitions.json#/geo"
+            }, {
+                "$ref": "definitions.json#/address"
+            }]
+        },
+
+        "sammler":{
+            "description":"Hyperlink auf eine Benutzer-Ressource, die den für die Durchführung dieser Aktion eingetragenen Benutzer repräsentiert",
+            "type":"string",
+            "format":"uri"
+        },
+
+        "betroffeneAngebote": {
+            "description": "Array von Hyperlinks auf Angebotsressourcen die von dieser Sammelaktion betroffen sind",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "uniqueItems": true,
+            "items": {
+                "description": "Link auf Angebotsressourcen",
+                "type":"string",
+                "format":"uri"
+            }
+        },
+
+        "required": [],
+
+        "links": [{
+            "rel": "self",
+            "href": "/sammelaktion/{id}"
+        }, {
+            "rel": "teilnehmer",
+            "href": "/sammelaktion/{id}/teilnehmer"
+        }, {
+            "rel": "angebote",
+            "href": "/sammelaktion/{id}/angebote"
+        }, {
+            "rel": "sammler",
+            "href": "/benutzer/{benutzerId}"
+        }]
+    }

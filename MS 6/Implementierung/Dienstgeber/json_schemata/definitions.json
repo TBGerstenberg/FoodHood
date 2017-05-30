@@ -1,0 +1,67 @@
+{
+    "$schema": "http://foodhood.org/schemata/definitions",
+    "wiederkehrendertermin": {
+        "description": "Repräsentiert einen Termin der in einem bestimmten Zeitintervall wiederholt wird, defintionen größtentiels von : https://schema.org/Date ,https://schema.org/Time , https://schema.org/OpeningHoursSpecification",
+        "type": "object",
+        "properties": {
+            "opens":{
+                "description": "Startzeitpunkt eines Termins",
+                "type": "string",
+                "pattern":"^(2[0-3]|[01][0-9]):?([0-5][0-9])$"
+            },
+            "closes":{
+                "description": "EndZeitpunkt eines Termins",
+                "type": "string",
+                "pattern":"^(2[0-3]|[01][0-9]):?([0-5][0-9])$"
+            },
+            "validFrom":{
+                "description":"Startdatum dieses Termins",
+                "type":"string",
+                "pattern":"/^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/"
+            },
+            "validThrough":{
+                "description":"Startdatum dieses Termins",
+                "type":"string",
+                "pattern":"/^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/"
+            },    
+            "day_of_week": {
+                "description": "Die Wochentage zwischen Start;- und Enddatum",
+                "type": "array",
+                "uniqueItems": true,
+                "maxItems": 7,
+                "items": {
+                    "decription": "Abkürzungen für die Wochentage",
+                    "type": "string",
+                    "enum": ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]
+                }
+            },
+            "ort": {
+                "$ref": "./external_schemata/address.json"
+            },
+            "wiederholung": {
+                "decription": "Intervall der Wiederholung",
+                "type": "string",
+                "enum": ["DAILY","WEEKLY","MONTHLY","YEARLY"]
+            },
+            
+        "required":["opens","closes","validFrom","validThrough","day_of_week"]
+        }
+    },
+
+    "fortbewegungsmittel":{
+        "type": "string",
+        "enum": ["zu_Fuß", "Auto", "Bahn", "Fahrrad"]
+    },
+
+    "geo":{
+        "$ref": "./external_schemata/geo.json"
+    },
+
+    "address":{
+        "$ref": "./external_schemata/address.json"
+    },
+
+    "card":{
+        "$ref": "./external_schemata/card.json"
+    }
+}

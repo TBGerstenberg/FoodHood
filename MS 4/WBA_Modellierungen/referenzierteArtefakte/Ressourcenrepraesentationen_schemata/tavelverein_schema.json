@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://example.com/schemas/myschema.json",
+    "description":"Schema für einen Tafelverein, der das Ziel von Spendentransporten darstellt ",
+    "title": "situation",
+    "type": "object",
+    "properties": {
+        "card":{
+            "$ref": "definitions.json#/card"
+        },
+
+        "öffnungszeiten":{
+            "$ref": "definitions.json#/wiederkehrendertermin"
+        },
+
+        "zustaendigkeiten":{
+            "type":"array",
+            "description":"Postleitzahlen array, spiegelt den Gebietsschutz wieder",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items":{
+                "type":"integer",
+                "pattern":"/^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$/"
+            }    
+        }
+    },
+    "required": ["card"]
+}

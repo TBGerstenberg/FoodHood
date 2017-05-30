@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trackMe"
+        android:src="@mipmap/track_me"
+        android:layout_toLeftOf="@+id/searchView"
+        android:layout_toStartOf="@+id/searchView" />
+
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_alignParentRight="true" />
+
+    <org.osmdroid.views.MapView android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/trackMe"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/sammelaktionInformationen"/>
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sammelaktionInformationen"
+        android:text="Hier stehen Sammelaktionen informationen"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/searchView"
+        android:layout_alignEnd="@+id/searchView" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleBarGroup"
+        android:layout_alignTop="@+id/map"
+        android:layout_centerHorizontal="true"
+        android:background="@color/common_signin_btn_light_text_disabled">
+
+        <ToggleButton
+            android:id="@+id/toggleButtonCar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textOff=""
+            android:textOn=""
+            android:background="@drawable/toggle_car_selector"
+            android:layout_alignTop="@+id/toggleBarGroup"
+            android:checked="true"/>
+
+        <ToggleButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/toggleButtonWalk"
+            android:background="@drawable/toggle_walk_selector"
+            android:textOff=""
+            android:textOn=""
+            android:layout_alignTop="@+id/toggleBarGroup" />
+
+        <ToggleButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/toggleButtonBike"
+            android:background="@drawable/toggle_bike_selector"
+            android:textOff=""
+            android:textOn=""
+            android:layout_alignTop="@+id/toggleBarGroup" />
+
+        <ToggleButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/toggleButtonTrain"
+            android:background="@drawable/toggle_train_selector"
+            android:textOff=""
+            android:textOn=""
+            android:layout_alignTop="@+id/toggleBarGroup" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/postSammelaktion"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_add_white_36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/searchView"
+        android:layout_alignEnd="@+id/searchView" />
+
+</RelativeLayout>

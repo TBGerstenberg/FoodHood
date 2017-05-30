@@ -1,0 +1,17 @@
+{
+     "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://example.com/schemas/myschema.json",
+    "description": "Schema für einen Ort an dem Spenden zwischengelagert werden können",
+    "title": "lager",
+    "type": "object",
+    "properties": {
+        "card": {
+            "$ref": "definitions.json#/card"
+        },
+
+        "öffnungszeiten": {
+            "$ref": "definitions.json#/wiederkehrendertermin"
+        }
+    },
+    "required": ["card"]
+}
